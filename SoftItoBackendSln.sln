@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryUsage", "DictionaryUsage\DictionaryUsage.csproj", "{84F60230-B61E-4508-A559-359F0E07944E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryUsage", "DictionaryUsage\DictionaryUsage.csproj", "{84F60230-B61E-4508-A559-359F0E07944E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFUsage", "EFUsage\EFUsage.csproj", "{35110E02-3D56-49DE-BC39-A9BCF12779FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{84F60230-B61E-4508-A559-359F0E07944E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84F60230-B61E-4508-A559-359F0E07944E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84F60230-B61E-4508-A559-359F0E07944E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35110E02-3D56-49DE-BC39-A9BCF12779FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35110E02-3D56-49DE-BC39-A9BCF12779FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35110E02-3D56-49DE-BC39-A9BCF12779FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35110E02-3D56-49DE-BC39-A9BCF12779FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
