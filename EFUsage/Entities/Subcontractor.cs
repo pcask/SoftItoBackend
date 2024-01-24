@@ -1,13 +1,8 @@
-﻿using EFUsage.Entities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EFUsage.Core;
 
 namespace EFUsage.Entities
 {
-    public class Subcontractor : BaseEntitiy
+    public class Subcontractor : Entity<Guid>
     {
         public string ServiceArea { get; set; }
         public string PlateNumber { get; set; }

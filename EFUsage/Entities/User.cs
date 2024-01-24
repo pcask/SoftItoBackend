@@ -1,13 +1,8 @@
-﻿using EFUsage.Entities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EFUsage.Core;
 
 namespace EFUsage.Entities
 {
-    public class User : BaseEntitiy
+    public class User : Entity<Guid>
     {
         public string IdentityNo { get; set; }
         public string FirstName { get; set; }

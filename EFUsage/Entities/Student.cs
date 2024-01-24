@@ -1,13 +1,8 @@
-﻿using EFUsage.Entities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EFUsage.Core;
 
 namespace EFUsage.Entities
 {
-    public class Student : BaseEntitiy
+    public class Student : Entity<Guid>
     {
         public string StudentNo { get; set; }
         public byte AbsenceCount { get; set; }

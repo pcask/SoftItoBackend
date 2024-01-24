@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EFUsage.Repositories
+namespace EFUsage.Repositories.Context
 {
-    public class MyDbContext : DbContext
+    public class ExampleDBContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

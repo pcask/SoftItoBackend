@@ -1,11 +1,47 @@
-﻿
+﻿using EFUsage.Common;
 using EFUsage.Entities;
-using EFUsage.FakeDataAccess;
-using EFUsage.Repositories;
+using EFUsage.Repositories.Abstracts;
+using EFUsage.Repositories.Concretes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using Newtonsoft.Json;
+
+
+
+Func<IQueryable<Employee>, IIncludableQueryable<Employee, User>> customInclude = (qEmp) =>
+{
+    return qEmp.Include(e => e.User);
+};
+
+Func<IQueryable<Employee>, IOrderedQueryable<Employee>> customOrderBy = (qEmp) =>
+{
+    return qEmp.OrderBy(e => e.Salary).ThenBy(e => e.User.FirstName);
+};
+
+EmployeeRepository employeeRepository = new();
+
+var employees = employeeRepository.GetAll(
+    filter: e => e.User.IsActive == true,
+    include: customInclude,
+    orderBy: customOrderBy
+    );
+
+
+//Console.WriteLine(JsonConvert.SerializeObject(employees));
+
+
+CustomContainer.AddContainer2<IUserRepository, UserRepository>();
+
+UserRepository userRepo = CustomContainer.GetItem2<IUserRepository>();
+var usersWithA = userRepo.GetAll(u => u.FirstName.StartsWith("Al")).ToList();
+
+Console.WriteLine(JsonConvert.SerializeObject(usersWithA));
+
+Console.ReadLine();
 
 /*
-MyDbContext db = new();
-
+// Seed Data
+ExampleDBContext db = new();
 
 List<User> generatedUsers = FakeDataGenerator.GenerateUser(280);
 db.Users.AddRange(generatedUsers);
@@ -44,8 +80,9 @@ db.Subcontractors.AddRange(generatedSubcontractors);
 
 db.SaveChanges();
 
-*/
-
 Console.WriteLine("All datas succesfully added.");
 
 Console.ReadLine();
+
+*/
+
