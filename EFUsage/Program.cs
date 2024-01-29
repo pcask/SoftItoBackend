@@ -30,9 +30,9 @@ var employees = employeeRepository.GetAll(
 //Console.WriteLine(JsonConvert.SerializeObject(employees));
 
 
-CustomContainer.AddContainer2<IUserRepository, UserRepository>();
+CustomContainer.AddContainerV2<IUserRepository, UserRepository>();
 
-UserRepository userRepo = CustomContainer.GetItem2<IUserRepository>();
+UserRepository userRepo = CustomContainer.GetItemV2<IUserRepository>();
 var usersWithA = userRepo.GetAll(u => u.FirstName.StartsWith("Al")).ToList();
 
 Console.WriteLine(JsonConvert.SerializeObject(usersWithA));

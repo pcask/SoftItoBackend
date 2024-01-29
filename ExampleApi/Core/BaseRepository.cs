@@ -1,22 +1,22 @@
-﻿using EFUsage.Repositories.Context;
+﻿using ExampleApi.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
-namespace EFUsage.Core
+namespace ExampleApi.Core
 {
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity>
         where TEntity : Entity
     {
-        protected ExampleDBContext context;
-        public BaseRepository()
+        protected ExampleDbContext _context;
+        public BaseRepository(ExampleDbContext context)
         {
-            context = new ExampleDBContext();
+            _context = context;
         }
 
-        public IQueryable<TEntity> Query()
+        protected IQueryable<TEntity> Query()
         {
-            return context.Set<TEntity>();
+            return _context.Set<TEntity>();
         }
 
         public virtual IEnumerable<TEntity> GetAll(
@@ -39,7 +39,8 @@ namespace EFUsage.Core
 
         public virtual TEntity? Get(
             Expression<Func<TEntity, bool>> condition,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, dynamic>>? include = null)
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, dynamic>>? include = null
+            )
         {
             var query = Query();
 
@@ -51,20 +52,22 @@ namespace EFUsage.Core
 
         public virtual TEntity Add(TEntity entity)
         {
-            context.Entry(entity).State = EntityState.Added;
-            context.SaveChanges();
+            _context.Entry(entity).State = EntityState.Added;
+            _context.SaveChanges();
             return entity;
         }
-        public virtual TEntity Update(TEntity entity)
+
+        public TEntity Update(TEntity entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
-            context.SaveChanges();
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
             return entity;
         }
-        public virtual TEntity Delete(TEntity entity)
+
+        public TEntity Delete(TEntity entity)
         {
-            context.Entry(entity).State = EntityState.Deleted;
-            context.SaveChanges();
+            _context.Entry(entity).State = EntityState.Deleted;
+            _context.SaveChanges();
             return entity;
         }
     }
